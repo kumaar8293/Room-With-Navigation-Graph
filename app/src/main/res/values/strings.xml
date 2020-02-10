@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Contact save</string>
+    <string name="name">Name</string>
+    <string name="email">Email Id</string>
+
+    <string name="my_notes">My Contact</string>
+    <string name="dummy_text">This is a simple and awesome Contact saving app. It gives you a quick and simple editing experience when you write Contact Details.</string>
+    <string name="settings">Settings</string>
+    <string name="delete">Delete</string>
+    <string name="name_transition">nameTransition</string>
+    <string name="email_transition">emailTransition</string>
+    <string name="please_add_some_contact">Please add some Contact</string>
+    <string name="priority">Contact Priority</string>
+    <string name="edit_contact">Edit Contact</string>
+    <string name="choose_your_action">Choose your action</string>
+    <string name="delete_contact">Delete Contact</string>
+</resources>
