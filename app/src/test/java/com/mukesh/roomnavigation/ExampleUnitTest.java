@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment;
+package com.mukesh.roomnavigation;
 
 import org.junit.Test;
 

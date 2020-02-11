@@ -1,12 +1,12 @@
-package com.mukesh.roomassignment.view.dashboard;
+package com.mukesh.roomnavigation.view.dashboard;
 
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.mukesh.roomassignment.database.Contact;
-import com.mukesh.roomassignment.repositories.ContactRepositories;
+import com.mukesh.roomnavigation.database.Contact;
+import com.mukesh.roomnavigation.repositories.ContactRepositories;
 
 import java.util.List;
 

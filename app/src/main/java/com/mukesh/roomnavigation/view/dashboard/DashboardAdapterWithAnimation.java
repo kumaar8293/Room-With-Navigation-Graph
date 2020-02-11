@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment.view.dashboard;
+package com.mukesh.roomnavigation.view.dashboard;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mukesh.roomassignment.R;
-import com.mukesh.roomassignment.database.Contact;
+import com.mukesh.roomnavigation.R;
+import com.mukesh.roomnavigation.database.Contact;
 
 
 public class DashboardAdapterWithAnimation extends ListAdapter<Contact, DashboardAdapterWithAnimation.NoteHolder> {

@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment.database;
+package com.mukesh.roomnavigation.database;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 /*
  *Room doesn't allow database operation in main thread
+ * This is the database class
  */
 
 @Database(entities = Contact.class, version = 1, exportSchema = false)
@@ -19,20 +20,26 @@ public abstract class ContactDatabase extends RoomDatabase {
     //ROOM auto generates all the necessary code we need here
     public abstract ContactDao noteDao();
 
-    public static synchronized ContactDatabase getNoteDatabase(Context context) {
-        if (instance == null)
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-                    ContactDatabase.class, "contact_database")
-                    .addCallback(databaseCallBack)
-                    .fallbackToDestructiveMigration().build();
+    //SingleTon design pattern using Lazy Initialization
+    public static ContactDatabase getNoteDatabase(Context context) {
+        if (instance == null) {
+            synchronized (ContactDatabase.class) {
+                if (instance == null) {
+                    instance = Room.databaseBuilder(context.getApplicationContext(),
+                            ContactDatabase.class, "contact_database")
+                            .addCallback(databaseCallBack)
+                            .fallbackToDestructiveMigration().build();
+                }
+            }
+        }
         return instance;
     }
 
-    private static RoomDatabase.Callback databaseCallBack = new RoomDatabase.Callback() {
+    private static Callback databaseCallBack = new Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            //inserting some predefinedData
+            //inserting some predefinedData just for demo purpose
             new PopulateDBAsyncTask(instance).execute();
         }
     };
@@ -56,7 +63,7 @@ public abstract class ContactDatabase extends RoomDatabase {
             contactDao.insertData(new Contact("Vikash", "vikash@gmail.com", 7));
             contactDao.insertData(new Contact("Biswatma", "biswatma@gmail.com", 8));
             contactDao.insertData(new Contact("Anuradha", "anuradha@gmail.com", 9));
-            contactDao.insertData(new Contact("Amresh", "amresh@gmail.com", 10));
+            contactDao.insertData(new Contact("Amaresh", "amaresh@gmail.com", 10));
             return null;
         }
     }

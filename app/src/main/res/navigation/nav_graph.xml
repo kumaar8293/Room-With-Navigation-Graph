@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.mukesh.roomnavigation.view.dashboard.DashboardFragment"
+        android:label="My Contact"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/addEditAction"
+            app:destination="@id/addOrEditFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/addOrEditFragment"
+        android:name="com.mukesh.roomnavigation.view.addEdit.AddOrEditFragment"
+        android:label="Add or Edit Contact"
+        tools:layout="@layout/fragment_add_edit" >
+        <argument
+            android:name="contactDetails"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.mukesh.roomnavigation.database.Contact" />
+    </fragment>
+</navigation>

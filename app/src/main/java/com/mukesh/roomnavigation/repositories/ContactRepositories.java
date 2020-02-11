@@ -1,19 +1,20 @@
-package com.mukesh.roomassignment.repositories;
+package com.mukesh.roomnavigation.repositories;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.mukesh.roomassignment.database.Contact;
-import com.mukesh.roomassignment.database.ContactDao;
-import com.mukesh.roomassignment.database.ContactDatabase;
+
+import com.mukesh.roomnavigation.database.Contact;
+import com.mukesh.roomnavigation.database.ContactDao;
+import com.mukesh.roomnavigation.database.ContactDatabase;
 
 import java.util.List;
 
-
 /*
  * Room doesn't allow database operation in main thread
+ * This is the repository class where we are calling to DOA class
  */
 
 public class ContactRepositories {
@@ -25,22 +26,22 @@ public class ContactRepositories {
         //We can call the below method because room generate all the necessary codes
         contactDao = contactDatabase.noteDao();
         allNotes = contactDao.getAllDataFromTable();
-
     }
 
     public void insertData(Contact contact) {
-        new DatabaseTask(contactDao,1).execute(contact);
+        new DatabaseTask(contactDao, 1).execute(contact);
     }
 
     public void updateData(Contact contact) {
-        new DatabaseTask(contactDao,2).execute(contact);
+        new DatabaseTask(contactDao, 2).execute(contact);
     }
+
     public void deleteData(Contact contact) {
-        new DatabaseTask(contactDao,3).execute(contact);
+        new DatabaseTask(contactDao, 3).execute(contact);
     }
 
     public void deleteAllData() {
-        new DatabaseTask(contactDao,4).execute((Contact) null);
+        new DatabaseTask(contactDao, 4).execute((Contact) null);
     }
 
     public LiveData<List<Contact>> getAllNotes() {
@@ -57,8 +58,6 @@ public class ContactRepositories {
          * type 3= delete
          * type 4= delete all
          **/
-
-
         DatabaseTask(ContactDao contactDao, int type) {
             this.contactDao = contactDao;
             this.type = type;

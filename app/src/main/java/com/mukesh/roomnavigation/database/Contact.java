@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment.database;
+package com.mukesh.roomnavigation.database;
 
 
 import androidx.room.Entity;
@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-/*This is a room entity
+/*This is a room entity data model class
  *Room Annotation (Entity) at compile time it will create all the necessary code  to create an SQLite table in this object
  *https://developer.android.com/training/data-storage/room/defining-data#java
+
  */
 @Entity(tableName = "contact_table")
 public class Contact implements Serializable {

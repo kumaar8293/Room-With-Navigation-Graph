@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment.database;
+package com.mukesh.roomnavigation.database;
 
 
 import androidx.lifecycle.LiveData;
@@ -10,14 +10,17 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 /*
- *This is a Room DAO (Data Access Object)
- *https://developer.android.com/training/data-storage/room/
+ * This is a Room DAO (Data Access Object)
+ * Which contains all the methods related to SQLite Database
+ * https://developer.android.com/training/data-storage/room/
  */
 @Dao
 public interface ContactDao {
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     void insertData(Contact contact);
 
     @Update
@@ -26,10 +29,10 @@ public interface ContactDao {
     @Delete
     void delete(Contact contact);
 
-    @Query("SELECT * FROM CONTACT_TABLE ORDER BY priority ASC")
+    @Query("SELECT * FROM contact_table ORDER BY priority ASC")
     LiveData<List<Contact>> getAllDataFromTable();
 
-    @Query("DELETE FROM CONTACT_TABLE")
+    @Query("DELETE FROM contact_table")
     void deleteAllData();
 
 }

@@ -1,4 +1,4 @@
-package com.mukesh.roomassignment.utils;
+package com.mukesh.roomnavigation.utils;
 
 import android.text.TextUtils;
 import android.util.Patterns;

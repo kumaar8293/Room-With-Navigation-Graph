@@ -1,6 +1,5 @@
-package com.mukesh.roomassignment.view.dashboard;
+package com.mukesh.roomnavigation.view.dashboard;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.mukesh.roomassignment.R;
+import com.mukesh.roomnavigation.R;
 
 public class BottomSheetDialogFrg extends BottomSheetDialogFragment implements
         View.OnClickListener {
 
     private BottomSheetListener bottomSheetListener;
+
+    BottomSheetDialogFrg(BottomSheetListener bottomSheetListener) {
+        this.bottomSheetListener = bottomSheetListener;
+    }
 
     @Nullable
     @Override
@@ -50,20 +53,6 @@ public class BottomSheetDialogFrg extends BottomSheetDialogFragment implements
         void editClicked();
 
         void deleteClicked();
-
-
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        try {
-            bottomSheetListener = (BottomSheetListener) context;
-        } catch (ClassCastException ex) {
-            ex.printStackTrace();
-
-            throw new ClassCastException(context.toString() + "Must implement bottom sheet listener");
-        }
 
     }
 }
